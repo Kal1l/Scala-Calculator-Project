@@ -1,0 +1,5 @@
+package Operacoes
+
+object Acumulador {
+
+}
