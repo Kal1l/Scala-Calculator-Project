@@ -3,7 +3,6 @@ import scala.io.StdIn.*
 import Operacoes.*
 import scala.collection.mutable.ListBuffer
 
-/*Importar os objetos que realizam as operações*/
 
 object Menu extends Exception{
 
@@ -11,6 +10,11 @@ object Menu extends Exception{
     var acumulador = 0.0
     var flag = true
     var historico = ListBuffer[String]()
+    
+    /* Listas em Scala são imutáveis, um claro sinal do paradigma funcional
+       então para casos onde queremos listas que serão constantemente modificadas
+       é comum utilizar o ListBuffer para criar listas modificáveis
+    */
 
     while (flag) {
       if (acumulador == 0) {
@@ -49,7 +53,7 @@ object Menu extends Exception{
             val expr = s"$acumulador" + s"$result"
             acumulador = valor.eval(expr)
             val aux2 = result
-            historico += s"$aux $aux2 = $acumulador"
+            historico += s"$aux$aux2 = $acumulador"
           }
         case "2" => val lista = historico.toList.take(10)
           for (l <- lista)
