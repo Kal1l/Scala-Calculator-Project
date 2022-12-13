@@ -67,7 +67,7 @@ object Menu extends Exception{
           println("% -> Modulo | Ex: a%b")
           println("p -> Potenciação | Ex: 2p2 = 4")
           println("r -> Raiz Quadrada | Ex: 2r = 4")
-          println("l - > Logaritmo | Ex: 2l = 0.69...")
+          println("l - > Logaritmo Natural | Ex: 2l = 0.69...")
           println("!-> Fatorial | Ex: 5!=120")
           println("s-> Seno | Ex: 45s = 0.85...")
           println("c-> Cosseno | Ex: 45c = 0.52...")
