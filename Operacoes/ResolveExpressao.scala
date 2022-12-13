@@ -19,7 +19,10 @@ object ResolveExpressao {
           //prioridade mais alta
         }else if (parensCount == 0 && opLoc < 0 && (expr(i) == '*' || expr(i) == '/' || expr(i) == '%')){
           opLoc = i
+        } else if (parensCount == 0 && opLoc < 0 && (expr(i) == 'p'||expr(i) == 'r')) {
+          opLoc = i
         }
+
         i -= 1
     }
     if(opLoc<0){
@@ -35,10 +38,11 @@ object ResolveExpressao {
         case '*' => CalculosOO.mult(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1)))  //multiplicação
         case '/' => CalculosOO.div(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1))) //divisão
         case '%' => CalculosOO.mod(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1))) //módulo
+        case 'p'=> CalculosOO.pow(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1)))
+        case 'r'=> CalculosOO.sqrt(eval(expr.substring(0,opLoc))) //raiz quadrada
+
         /*
         Tentativa de tentar implementar todos as operações
-        case 'p'=> CalculosOO.pow(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1))) //potencia
-        case 'r'=> CalculosOO.sqrt(eval(expr.substring(0,opLoc))) //raiz quadrada
         case 'l'=> CalculosOO.ln(eval(expr.substring(0,opLoc))) //logaritmo  natural
         case '!' => CalculosOO.fat(eval(expr.substring(opLoc+1)))  //fatorial
         case 's'=> CalculosOO.sin(eval(expr.substring(0,opLoc))) //seno
@@ -47,11 +51,5 @@ object ResolveExpressao {
         */
       }
     }
-  }
-
-  def main(args:Array[String]): Unit = {
-    println("Digite o valor")
-    val result=readLine()
-    println(eval(result2))
   }
 }

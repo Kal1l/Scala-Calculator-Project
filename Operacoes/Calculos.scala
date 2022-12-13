@@ -1,6 +1,5 @@
 package Operacoes
 import scala.io.StdIn.*
-import scala.util.{Failure, Success, Try}
 import scala.math.*
 
 
@@ -64,20 +63,21 @@ object CalculosOO {
   }
 
   def pow(x: Double, y: Double): Double = {
-    val resultado = pow(x, y)
+    val resultado = scala.math.pow(x, y)
+
     if (x < 0 && y % 2 == 0 && resultado < 0) throw new OverflowException
     else if (x < 0 && y % 2 != 0 && resultado > 0) throw new UnderflowException
     else return resultado
   }
 
   def sqrt(x: Double): Double = {
-    val resultado = sqrt(x)
+    val resultado = scala.math.sqrt(x)
     if (x < 0) throw new RuntimeException("Raiz Negativa")
     else return resultado
   }
 
   def ln(x: Double): Double = {
-    val resultado = log(x)
+    val resultado = scala.math.log(x)
     if (x < 0) throw new RuntimeException("Logaritmo Negativo")
     else return resultado
   }
@@ -92,7 +92,7 @@ object CalculosOO {
   }
 
   def sin(x: Double): Double = {
-    val resultado = sin(x)
+    val resultado = scala.math.sin(x)
 
     if (x > 0  && resultado < 0) throw new OverflowException
     else if (x < 0 && resultado > 0) throw new UnderflowException
@@ -100,7 +100,7 @@ object CalculosOO {
   }
 
   def cos(x: Double): Double = {
-    val resultado = cos(x)
+    val resultado = scala.math.cos(x)
 
     if (x > 0 && resultado < 0) throw new OverflowException
     else if (x < 0 && resultado > 0) throw new UnderflowException
@@ -108,7 +108,7 @@ object CalculosOO {
   }
 
   def tg(x: Double): Double = {
-    val resultado = tg(x)
+    val resultado = scala.math.tg(x)
 
     if (x > 0 && resultado < 0) throw new OverflowException
     else if (x < 0 && resultado > 0) throw new UnderflowException
