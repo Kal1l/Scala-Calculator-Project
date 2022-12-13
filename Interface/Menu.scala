@@ -3,8 +3,6 @@ import scala.io.StdIn.*
 import Operacoes.*
 import scala.collection.mutable.ListBuffer
 
-/*Importar os objetos que realizam as operações*/
-
 object Menu extends Exception{
 
   def main(args: Array[String]): Unit = {
@@ -12,6 +10,11 @@ object Menu extends Exception{
     var flag = true
     var historico = ListBuffer[String]()
 
+    /* Listas em Scala são imutáveis, um claro sinal do paradigma funcional
+       então para casos onde queremos listas que serão constantemente modificadas
+       é comum utilizar o ListBuffer para criar listas modificáveis
+    */
+    
     while (flag) {
       if (acumulador == 0) {
         println("SELECIONE A AÇÃO DESEJADA:")
@@ -45,7 +48,7 @@ object Menu extends Exception{
             val expr = s"$acumulador" + s"$result"
             acumulador = valor.eval(expr)
             val aux2 = result
-            historico += s"$aux $aux2 = $acumulador"
+            historico += s"$aux$aux2 = $acumulador"
           }
         case "2" =>
           println("SELECIONE A OPERACAO:")
@@ -56,6 +59,8 @@ object Menu extends Exception{
           println("5 - Seno(x)")
           println("6 - Cosseno(x)")
           println("7 - Tangente(x)")
+          println("8 - Pi(π)")
+          println("9 - Euler(e)")
           val inputOp = readLine()
 
           inputOp match{
@@ -69,7 +74,7 @@ object Menu extends Exception{
                 historico += s"pow{$x,$y} = $result"
                 acumulador = result
               }else{
-                println(f"Digite x: $acumulador")
+                println(f"x: $acumulador")
                 val x = acumulador
                 printf(f"Digite y:")
                 val y = readDouble()
@@ -78,43 +83,87 @@ object Menu extends Exception{
                 acumulador = result
               }
             case "2"=>
-              printf(f"Digite x: ")
-              val x = readDouble()
-              val result = CalculosOO.sqrt(x)
-              historico += s"sqrt{$x} = $result"
-              acumulador = result
+              if(acumulador == 0){
+                printf(f"Digite x: ")
+                val x = readDouble()
+                val result = CalculosOO.sqrt(x)
+                historico += s"sqrt{$x} = $result"
+                acumulador = result
+              } else {
+                val x = acumulador
+                val result = CalculosOO.sqrt(x)
+                historico += s"sqrt{$x} = $result"
+                acumulador = result
+              }
             case "3"=>
-              printf(f"Digite x: ")
-              val x=readDouble()
-              val result = CalculosOO.ln(x)
-              historico += s"ln{$x} = $result"
-              acumulador = result
+              if(acumulador == 0){
+                printf(f"Digite x: ")
+                val x = readDouble()
+                val result = CalculosOO.ln(x)
+                historico += s"ln{$x} = $result"
+                acumulador = result
+              } else {
+                val x = acumulador
+                val result = CalculosOO.ln(x)
+                historico += s"ln{$x} = $result"
+                acumulador = result
+              }
             case "4"=>
-              printf(f"Digite x: ")
-              val x=readDouble()
-              val result=CalculosOO.fat(x)
-              historico += s"$x! = $result"
-              acumulador = result
+              if(acumulador == 0) {
+                printf(f"Digite x: ")
+                val x = readDouble()
+                val result = CalculosOO.fat(x)
+                historico += s"$x! = $result"
+                acumulador = result
+              } else {
+                val x = acumulador
+                val result = CalculosOO.fat(x)
+                historico += s"$x! = $result"
+                acumulador = result
+              }
             case "5"=>
-              printf(f"Digite x: ")
-              val x=readDouble()
-              val result=CalculosOO.sin(x)
-              historico += s"sin{$x} = $result"
-              acumulador = result
+              if(acumulador == 0) {
+                printf(f"Digite x: ")
+                val x = readDouble()
+                val result = CalculosOO.sin(x)
+                historico += s"sin{$x} = $result"
+                acumulador = result
+              } else {
+                val x = acumulador
+                val result = CalculosOO.sin(x)
+                historico += s"sin{$x} = $result"
+                acumulador = result
+              }
             case "6"=>
-              printf(f"Digite x: ")
-              val x=readDouble()
-              val result=CalculosOO.cos(x)
-              historico += s"cos{$x} = $result"
-              acumulador = result
+              if(acumulador == 0){
+                printf(f"Digite x: ")
+                val x = readDouble()
+                val result = CalculosOO.cos(x)
+                historico += s"cos{$x} = $result"
+                acumulador = result
+              } else {
+                val x = acumulador
+                val result = CalculosOO.cos(x)
+                historico += s"cos{$x} = $result"
+                acumulador = result
+              }
             case "7"=>
-              printf(f"Digite x: ")
-              val x=readDouble()
-              val result=CalculosOO.tg(x)
-              historico += s"tg{$x} = $result"
-              acumulador = result
+              if(acumulador == 0) {
+                printf(f"Digite x: ")
+                val x = readDouble()
+                val result = CalculosOO.tg(x)
+                historico += s"tg{$x} = $result"
+                acumulador = result
+              } else {
+                val x = acumulador
+                val result = CalculosOO.tg(x)
+                historico += s"tg{$x} = $result"
+                acumulador = result
+              }
+            case "8" => acumulador = 3.14159265359
+            case "9" => acumulador = 2.7182818284590452353602874713527
             case _ => println("OPERACAO INVALIDA")
-            }
+          }
         case "3" => val lista = historico.toList.take(10)
           for (l <- lista)
             println(l)
