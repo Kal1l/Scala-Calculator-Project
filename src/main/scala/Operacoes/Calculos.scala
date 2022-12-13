@@ -2,8 +2,11 @@ package Operacoes
 import scala.io.StdIn.*
 import scala.math.*
 
-
+//TUDO EM ESCALA SÃO OBJETOS,tornando-a uma linguagem verdadeiramente Orientada a Objeto)
 object CalculosFunc {
+  /*Os tipos em Scala para variáveis simples não precisam ser declarados,
+    apesar de poderem.*/
+  /*Scala conta com simplificações que tornam o código mais simples*/
   val soma: (Double,Double) => Double = _+_
   val sub: (Double,Double) => Double = _-_
   val mult: (Double,Double) => Double = _*_
@@ -22,6 +25,7 @@ object CalculosFunc {
 
 object CalculosOO {
 
+  //Tratamento de excessão semelhante a java
   class OverflowException extends RuntimeException("Valor muito alto")
   class UnderflowException extends RuntimeException("Valor muito baixo")
   class ZeroDivisionException extends RuntimeException("Divisão por 0")
@@ -29,7 +33,7 @@ object CalculosOO {
   def soma(x: Double, y: Double): Double = {
     val resultado = x + y
 
-    if (x > 0 && y > 0 && resultado < 0) throw new OverflowException
+    if (x > 0 && y > 0 && resultado < 0) throw new OverflowException  //Caso ocorra a excessão o programa para e avisa o erro
     else if (x < 0 && y < 0 && resultado > 0) throw new UnderflowException
     else return resultado
   }
@@ -82,6 +86,7 @@ object CalculosOO {
     else return resultado
   }
 
+  //Função Recursiva
   def fat(x: Double): Double = {
     val resultado = {
       if (x == 1) return x

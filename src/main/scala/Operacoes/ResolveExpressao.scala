@@ -15,6 +15,7 @@ object ResolveExpressao {
           //prioridade mais baixa
         else if (parensCount == 0 && (expr(i) == '+' || expr(i) == '-')) {
           opLoc = i
+          //encontrando o sinal de bais baixa prioridade
           i = -1
         } else if (parensCount == 0 && opLoc < 0 && (expr(i) == '*' || expr(i) == '/' || expr(i) == '%')){
           opLoc = i
@@ -27,12 +28,15 @@ object ResolveExpressao {
         i -= 1
     }
     if(opLoc<0){
+      //prioridade de parênteses
       if(expr.trim()(0)=='('){
         eval(expr.trim.substring(1,expr.length-1))
+        //transforma um número
       } else{
         expr.toDouble
       }
     }else{
+      //encontrando os operadores para realizar os cálculos
       expr(opLoc) match{
         case '+' => CalculosOO.soma(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1)))//soma
         case '-' => CalculosOO.sub(eval(expr.substring(0,opLoc)),eval(expr.substring(opLoc+1)))//subtração
